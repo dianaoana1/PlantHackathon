@@ -14,3 +14,4 @@ package.json
 yarn.lock
 # macOS
 .DS_Store
+package.json
