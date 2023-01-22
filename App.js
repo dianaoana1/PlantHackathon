@@ -1,40 +1,28 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet } from 'react-native';
 import welcomePage from './src/pages/welcomePage';
 import mainMenu from './src/pages/mainMenu';
-// import noGardenText from './src/pages/noGardenText';
-import { createStackNavigator } from 'react-navigation-stack';
-import {createAppContainer} from 'react-navigation';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-const MainStack = createStackNavigator({
-  Welcome: {
-    screen: welcomePage,
-    navigationOptions: {
-      title: 'Welcome'
-    }
-  },
-  mainMenu: {
-    screen: mainMenu,
-    navigationOptions: {
-      title: 'Main Menu'
-    }
-  },
-  // noGardenText: {
-  //   screen: noGardenText,
-  //   navigationOptions: {
-  //     title: 'No Garden'
-  //   }
-  // },
-});
-
-const AppContainer = createAppContainer(MainStack);
+const Stack = createStackNavigator();
 
 export default function App({ plantCount }) {
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <AppContainer initialRouteName={plantCount > 0 ? "mainMenu" : "Welcome"} />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName={plantCount > 0 ? "mainMenu" : "Welcome"}>
+        <Stack.Screen 
+          name="Welcome"
+          component={welcomePage}
+          options={{title: 'Welcome'}}
+        />
+        <Stack.Screen 
+          name="mainMenu"
+          component={mainMenu}
+          options={{title: 'Main Menu'}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
@@ -46,4 +34,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-
