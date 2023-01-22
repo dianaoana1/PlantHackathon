@@ -7,6 +7,9 @@ export default function welcomePage(){
         <View style={styles.container}>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center'}}>
                 <Image source={require('../images/welcomePlant.png')} style={{ width: 200, height: 200, alignSelf: 'center'}} />
+                <View style={styles.textContainer}>
+                    <Text style={styles.text}>Welcome to ConU-HackaGrow!</Text>
+                </View>
                 <MyButton
                     text="Start your own Garden!"
                     navigateTo="mainMenu"
@@ -24,8 +27,15 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
     },
+    textContainer: {
+        padding: 30,
+    },
+    text: {
+        textAlign: 'center',
+        fontSize: 20,
+    },
     button: {
-        backgroundColor: '#90F694',
+        backgroundColor: 'black',
         marginTop: 20,
     },
 });
